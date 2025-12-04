@@ -4,12 +4,13 @@ class Coinstack {
   Coinstack(this.coinStack) {
     coinStack.sort();
   }
-  String toString() => "Geldstapel mit den Münzen ${coinStack.join(", ")}";
+  String toString() =>
+      "Coinstack mit folgenden Münzen bleibt übrig ${coinStack.join(", ")}";
   int get value => coinStack.fold(0, (a, b) => a + b);
 
   Coinstack? operator -(Coinstack other) {
     List<int> copyCoinstack = [...coinStack];
-    for (final (index,  coin) in other.coinStack.indexed) {
+    for (final (index, coin) in other.coinStack.indexed) {
       if (!copyCoinstack.remove(coin)) {
         return null;
       }
