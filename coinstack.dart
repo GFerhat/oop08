@@ -8,11 +8,12 @@ class Coinstack {
   int get value => coinStack.fold(0, (a, b) => a + b);
 
   Coinstack? operator -(Coinstack other) {
-    List<int> copyCoinstack = List.from(coinStack);
-    for (final coin in other.coinStack) {
+    List<int> copyCoinstack = [...coinStack];
+    for (final (index,  coin) in other.coinStack.indexed) {
       if (!copyCoinstack.remove(coin)) {
         return null;
       }
+      print(index);
     }
     return Coinstack(copyCoinstack);
   }
